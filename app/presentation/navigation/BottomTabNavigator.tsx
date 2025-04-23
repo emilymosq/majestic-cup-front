@@ -1,9 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Member from "../components/Member";
 import TeamMembers from "../views/team-members/TeamMembers";
+import Matches from "../matches/Matches";
 import {HomeScreen} from "../views/Home/HomeScreen";
 
 const Tab = createBottomTabNavigator();
@@ -47,7 +46,7 @@ export default function BottomTabNavigator() {
                 />
                 <Tab.Screen
                     name="Partidas"
-                    component={Partidas}
+                    component={Matches}
                     options={{
                         tabBarLabel: 'Partidas',
                         tabBarIcon: ({ color, size }: { color: string; size: number }) => (
@@ -77,27 +76,6 @@ export default function BottomTabNavigator() {
     );
 }
 
-function Home() {
-    return (
-        <View style={styles.container}>
-            <Text>Favoritos!</Text>
-        </View>
-    );
-}
-function Draft() {
-    return (
-        <View style={styles.container}>
-            <Text>Favoritos!</Text>
-        </View>
-    );
-}
-function Partidas() {
-    return (
-        <View style={styles.container}>
-            <Text>Favoritos!</Text>
-        </View>
-    );
-}
 function Estadisticas() {
     return (
         <View style={styles.container}>
