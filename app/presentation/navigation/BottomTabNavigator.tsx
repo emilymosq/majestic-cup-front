@@ -1,9 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Member from "../components/Member";
 import TeamMembers from "../views/team-members/TeamMembers";
+import Matches from "../matches/Matches";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +45,7 @@ export default function BottomTabNavigator() {
                 />
                 <Tab.Screen
                     name="Partidas"
-                    component={Partidas}
+                    component={Matches}
                     options={{
                         tabBarLabel: 'Partidas',
                         tabBarIcon: ({ color, size }: { color: string; size: number }) => (
