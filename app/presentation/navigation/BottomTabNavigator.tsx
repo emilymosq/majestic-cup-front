@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-
+import Member from "../components/Member";
+import TeamMembers from "../views/team-members/TeamMembers";
 
 const Tab = createBottomTabNavigator();
 
@@ -12,7 +12,7 @@ export default function BottomTabNavigator() {
             <Tab.Navigator
                 screenOptions={{
                     headerShown: false,
-                    tabBarStyle: { backgroundColor: '#1A1A1C' },
+                    tabBarStyle: {backgroundColor: '#1A1A1C', borderTopWidth: 0,},
                     tabBarActiveTintColor: '#fff',
                 }}
             >
@@ -20,19 +20,27 @@ export default function BottomTabNavigator() {
                     name="Inicio"
                     component={Home}
                     options={{
-                        tabBarLabel: 'Inicio',
-                        tabBarIcon: ({ color, size }: { color: string; size: number }) => (
-                            <Icon name="home" size={size} color={color} />
+                        tabBarLabel: 'Home',
+                        tabBarIcon: ({ color, size }) => (
+                            <Image
+                                source={require('../../../assets/casa.png')}
+                                style={{ width: size, height: size, tintColor: color }}
+                                resizeMode="contain"
+                            />
                         ),
                     }}
                 />
                 <Tab.Screen
                     name="Draft"
-                    component={Draft}
+                    component={TeamMembers}
                     options={{
                         tabBarLabel: 'Draft',
                         tabBarIcon: ({ color, size }: { color: string; size: number }) => (
-                            <Icon name="draft" size={size} color={color} />
+                            <Image
+                                source={require('../../../assets/juegos.png')}
+                                style={{ width: size, height: size, tintColor: color }}
+                                resizeMode="contain"
+                            />
                         ),
                     }}
                 />
@@ -42,7 +50,11 @@ export default function BottomTabNavigator() {
                     options={{
                         tabBarLabel: 'Partidas',
                         tabBarIcon: ({ color, size }: { color: string; size: number }) => (
-                            <Icon name="torney" size={size} color={color} />
+                            <Image
+                                source={require('../../../assets/torneo.png')}
+                                style={{ width: size, height: size, tintColor: color }}
+                                resizeMode="contain"
+                            />
                         ),
                     }}
                 />
@@ -52,7 +64,11 @@ export default function BottomTabNavigator() {
                     options={{
                         tabBarLabel: 'Estadisticas',
                         tabBarIcon: ({ color, size }: { color: string; size: number }) => (
-                            <Icon name="statistic" size={size} color={color} />
+                            <Image
+                                source={require('../../../assets/estadistico.png')}
+                                style={{ width: size, height: size, tintColor: color }}
+                                resizeMode="contain"
+                            />
                         ),
                     }}
                 />

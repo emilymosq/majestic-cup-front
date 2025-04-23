@@ -1,10 +1,14 @@
 import React from "react";
-import {Text, View} from "react-native";
+import {Button, Text, View} from "react-native";
+import {PropsStackNavigation} from "../../interfaces/StackNav";
 
-const Login = () => {
+const Login = ({navigation, route}: PropsStackNavigation) => {
     return(
         <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
             <Text>Login</Text>
+            <Button title={"Entrar"} onPress={()=>{
+                navigation.navigate('BottomTabNavigator')
+            }}/>
         </View>
     )
 }
