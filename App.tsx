@@ -3,13 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 import Login from "./app/presentation/views/auth/Login";
+import BottomTabNavigator from "./app/presentation/navigation/BottomTabNavigator";
 import {HomeScreen} from "./app/presentation/views/Home/HomeScreen";
 
 const Stack= createNativeStackNavigator<RootStackParamlist>();
 
 export type RootStackParamlist = {
-  Login: undefined;
-  HomeScreen: undefined;
+    Login: undefined,
+    BottomTabNavigator: undefined,
 }
 
 export default function App() {
@@ -17,7 +18,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name={"Login"} component={Login}/>
-          <Stack.Screen name={"HomeScreen"} component={HomeScreen}/>
+          <Stack.Screen name={"BottomTabNavigator"} component={BottomTabNavigator}/>
         </Stack.Navigator>
       </NavigationContainer>
   );

@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import WebView from "react-native-webview";
+import WebView from 'react-native-webview';
 import styles from "../../views/Home/StyleHome";
 
 interface Props {
