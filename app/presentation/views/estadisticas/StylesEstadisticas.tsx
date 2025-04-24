@@ -16,6 +16,19 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 30
     },
+    topTitles: {
+        position: 'relative',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 30,
+        flexDirection: 'row',
+        width: '90%',
+    },
+    topText: {
+        fontSize: 25,
+        color: AppColors.color,
+        fontWeight: 400,
+    },
     backButton: {
         position: 'absolute',
         left: 0,
@@ -27,15 +40,15 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain',
         left: 0,
     },
-    textWrapper: {
+    title: {
         alignItems: 'center',
     },
-    textTeam: {
+    titleText: {
         fontSize: 22,
         color: AppColors.color,
         fontWeight: 'bold',
     },
-    containerMember:{
+    containerEstadisticas:{
         marginTop: 35,
         gap: 25,
         justifyContent: 'center',

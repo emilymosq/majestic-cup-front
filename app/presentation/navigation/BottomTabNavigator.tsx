@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import TeamMembers from "../views/team-members/TeamMembers";
 import Matches from "../matches/Matches";
 import {HomeScreen} from "../views/Home/HomeScreen";
+import Estadisticas from "../views/estadisticas/Estadisticas";
 
 const Tab = createBottomTabNavigator();
 
@@ -73,14 +74,6 @@ export default function BottomTabNavigator() {
                     }}
                 />
             </Tab.Navigator>
-    );
-}
-
-function Estadisticas() {
-    return (
-        <View style={styles.container}>
-            <Text>Agregar!</Text>
-        </View>
     );
 }
 
