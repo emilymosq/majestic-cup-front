@@ -60,16 +60,18 @@ const styles = StyleSheet.create({
     },
     info: {
         flex: 1,
+        flexDirection: 'row',
     },
     teamName: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'white',
-        paddingHorizontal: 50,
+        width: '100%',
+        flex: 1,
     },
     trophy: {
-        width: 70,
-        height: 70,
+        width: 60,
+        height: 60,
     }
 })
 
