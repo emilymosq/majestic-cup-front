@@ -3,6 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Member from "../../components/Member";
 import {styles} from "./StylesEstadisticas";
 import EstadisticasComponent from "../../components/Estadisticas";
+import CharacterModal from "../../components/CharacterModal";
 
 const Estadisticas = () => {
     return (
@@ -20,6 +21,8 @@ const Estadisticas = () => {
             <View style={styles.containerEstadisticas}>
                 <EstadisticasComponent/>
             </View>
+
+            <CharacterModal/>
         </View>
     )
 }
