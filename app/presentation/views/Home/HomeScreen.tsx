@@ -1,4 +1,4 @@
-import {View, Text, ScrollView, Image} from "react-native";
+import {View, Text, ScrollView, Image, TouchableOpacity} from "react-native";
 import styles from "./StyleHome";
 import {HomeRectangle} from "../../components/Home/HomeComponent";
 
@@ -52,7 +52,11 @@ export function HomeScreen({navigation}: {navigation: any}) {
                     <Text style={styles.subtittle}>Majestic CUP es una batalla digna de Noxus, donde el respeto se gana a la fuerza. Desde el 31 de febrero, equipos de hasta 6 jugadores tendrán que demostrar su fortaleza, ya sea con ingenio estratégico o pura habilidad implacable.</Text>
                 </View>
                 {equipos.map((equipo) =>(
-                    <View key={equipo.id} style={styles.card}>
+                    <TouchableOpacity
+                        key={equipo.id}
+                        style={styles.card}
+                        onPress={() => navigation.navigate('TeamMembers')}
+                    >
                         <Image source={equipo.avatar} style={styles.avatar}/>
                         <View style={styles.info}>
                             <Text style={styles.teamName}>{equipo.nombre}</Text>
@@ -60,7 +64,7 @@ export function HomeScreen({navigation}: {navigation: any}) {
                             <Text style={styles.teamName}>{equipo.porcents}</Text>
                         </View>
                         <Image source={equipo.trophy} style={styles.trophy}/>
-                    </View>
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
         </View>
