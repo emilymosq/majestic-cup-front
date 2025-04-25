@@ -5,6 +5,7 @@ import TeamMembers from "../views/team-members/TeamMembers";
 import Matches from "../matches/Matches";
 import {HomeScreen} from "../views/Home/HomeScreen";
 import Estadisticas from "../views/estadisticas/Estadisticas";
+import Draft from "../views/draft/Draft";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +34,7 @@ export default function BottomTabNavigator() {
                 />
                 <Tab.Screen
                     name="Draft"
-                    component={TeamMembers}
+                    component={Draft}
                     options={{
                         tabBarLabel: 'Draft',
                         tabBarIcon: ({ color, size }: { color: string; size: number }) => (
