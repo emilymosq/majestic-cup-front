@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import TeamMembers from "../views/team-members/TeamMembers";
-import Matches from "../matches/Matches";
+import Matches from "../views/matches/Matches";
 import {HomeScreen} from "../views/Home/HomeScreen";
 import Estadisticas from "../views/estadisticas/Estadisticas";
 import Draft from "../views/draft/Draft";

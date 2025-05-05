@@ -12,6 +12,7 @@ export type RootStackParamlist = {
     Login: undefined,
     TeamMembers: undefined,
     BottomTabNavigator: undefined,
+    DetailMember: undefined,
 }
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
               <Stack.Screen name={"Login"} component={Login}/>
               <Stack.Screen name={"TeamMembers"} component={TeamMembers}/>
               <Stack.Screen name={"BottomTabNavigator"} component={BottomTabNavigator}/>
+              <Stack.Screen name={"DetailMember"} component={TeamMembers}/>
             </Stack.Navigator>
           </NavigationContainer>
       </SafeAreaProvider>
