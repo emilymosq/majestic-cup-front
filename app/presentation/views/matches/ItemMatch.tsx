@@ -4,8 +4,6 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import {RootStackParamlist} from "../../../../App";
 import MatchesComponent from "../../components/MatchesComponent";
 
-
-
 interface Props{
     item: MatchesInterface;
 }
@@ -15,12 +13,12 @@ export const RenderPartida =  ({item}: Props) => {
 
     return (
         <MatchesComponent
-            equipo1={item.equipo1}
-            equipo2={item.equipo2}
-            // img={require("../../../../assets/juegos.png")}
-            ganador={item.ganador}
+            equipo1={item.equipo1.nombre}
+            equipo2={item.equipo2.nombre}
+            imagen1={{ uri: `http://10.0.2.2:8000${item.equipo1.imagen}` }}
+            imagen2={{ uri: `http://10.0.2.2:8000${item.equipo2.imagen}` }}
+            ganador= {item.ganador}
             fecha={item.fecha}
         />
-
     )
 }

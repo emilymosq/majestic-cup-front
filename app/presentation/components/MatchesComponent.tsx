@@ -7,9 +7,11 @@ interface Props {
     equipo2: string;
     ganador: string;
     fecha: Date | string;
+    imagen1: any;
+    imagen2: any;
 }
 
-const MatchesComponent = ({ equipo1, equipo2, ganador, fecha }: Props) => {
+const MatchesComponent = ({ equipo1, equipo2, ganador, fecha, imagen1, imagen2 }: Props) => {
     return(
         <View style={styles.card}>
             <View style={styles.header}>
@@ -20,11 +22,11 @@ const MatchesComponent = ({ equipo1, equipo2, ganador, fecha }: Props) => {
                 {/* Equipos (columna) */}
                 <View style={styles.teamsColumn}>
                     <View style={styles.teamContainer}>
-                        <Image source={require('../../../assets/usuario.png')} style={styles.circle}/>
+                        <Image source={imagen1} style={styles.circle}/>
                         <Text style={styles.teamName}>{equipo1}</Text>
                     </View>
                     <View style={styles.teamContainer}>
-                        <Image source={require('../../../assets/usuario.png')} style={styles.circle}/>
+                        <Image source={imagen2} style={styles.circle}/>
                         <Text style={styles.teamName}>{equipo2}</Text>
                     </View>
                 </View>
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: AppColors.backgroundSecondary,
         padding: 20,
+        marginVertical: 10
     },
     header: {
         flexDirection: 'row',
