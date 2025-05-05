@@ -2,7 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import {AppColors} from "../theme/AppTheme";
 
-const MatchesComponente = () => {
+interface Props {
+    equipo1: string;
+    equipo2: string;
+    ganador: string;
+    fecha: Date | string;
+}
+
+const MatchesComponent = ({ equipo1, equipo2, ganador, fecha }: Props) => {
     return(
         <View style={styles.card}>
             <View style={styles.header}>
@@ -14,24 +21,26 @@ const MatchesComponente = () => {
                 <View style={styles.teamsColumn}>
                     <View style={styles.teamContainer}>
                         <Image source={require('../../../assets/usuario.png')} style={styles.circle}/>
-                        <Text style={styles.teamName}>Equipo 1</Text>
+                        <Text style={styles.teamName}>{equipo1}</Text>
                     </View>
                     <View style={styles.teamContainer}>
                         <Image source={require('../../../assets/usuario.png')} style={styles.circle}/>
-                        <Text style={styles.teamName}>Equipo 2</Text>
+                        <Text style={styles.teamName}>{equipo2}</Text>
                     </View>
                 </View>
 
                 {/* Ganador (centrado verticalmente al lado) */}
                 <View style={styles.winnerContainer}>
                     <Image source={require('../../../assets/usuario.png')} style={styles.circle}/>
-                    <Text style={styles.teamName}>Ganador</Text>
+                    <Text style={styles.teamName}>{ganador}</Text>
                 </View>
             </View>
 
             <View style={styles.footer}>
-                <Text style={styles.date}>22/04/2025</Text>
-                <Text style={styles.date}>12:55</Text>
+                <Text style={styles.date}>
+                    {typeof fecha === 'string' ? fecha : fecha.toLocaleDateString()}
+                </Text>
+                {/*<Text style={styles.date}>12:55</Text>*/}
             </View>
         </View>
     )
@@ -101,4 +110,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MatchesComponente;
+export default MatchesComponent;
