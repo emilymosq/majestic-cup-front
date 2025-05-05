@@ -40,7 +40,7 @@ export function HomeScreen({navigation}: PropsStackNavigation) {
                     })
                     .map((team, index) =>(
                     <TouchableOpacity key={team.id} onPress={() => {
-                        navigation.navigate('DetailMember')
+                        navigation.navigate('TeamMembers', { slug: team.slug})
                     }}>
                         <View style={styles.card}>
                             <Image source={

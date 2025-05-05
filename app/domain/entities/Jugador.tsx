@@ -1,8 +1,10 @@
+import {TeamsInterface} from "./Teams";
+
 export interface Jugador {
     id: number;
     nombre: string;
     nickname: string;
-//    equipo: Equipo;
+    equipo: TeamsInterface[];
     slug: string;
 }
 
