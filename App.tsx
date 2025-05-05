@@ -10,7 +10,7 @@ const Stack= createNativeStackNavigator<RootStackParamlist>();
 
 export type RootStackParamlist = {
     Login: undefined,
-    TeamMembers: undefined,
+    TeamMembers: {slug: string},
     BottomTabNavigator: undefined,
     DetailMember: undefined,
 }
