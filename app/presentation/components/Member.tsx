@@ -1,16 +1,23 @@
 import React from "react";
 import {Image, Text, View, StyleSheet} from "react-native";
 import {AppColors} from "../theme/AppTheme";
+import {TeamMembersViewModel} from "../views/team-members/ViewModel";
 
 const Member = () => {
+    const {jugadores, errorMessage} = TeamMembersViewModel();
+
     return (
         <View style={styles.container}>
-            <View style={styles.userInfo}>
-                <Image source={require('../../../assets/usuario.png')} style={styles.imageUser} />
-                <Text style={styles.textUser}>Usuario</Text>
-            </View>
-            <Text style={styles.textUser}>username</Text>
-            <Image source={require('../../../assets/comunicacion.png')} style={styles.imageIcon} />
+            {jugadores.map((j, index) => (
+                <View key={index} style={styles.container}>
+                    <View style={styles.userInfo}>
+                        <Image source={require('../../../assets/usuario.png')} style={styles.imageUser} />
+                        <Text style={styles.textUser}>{j.nombre}</Text>
+                    </View>
+                    <Text style={styles.textUser}>{j.nickname}</Text>
+                    <Image source={require('../../../assets/comunicacion.png')} style={styles.imageIcon} />
+                </View>
+            ))}
         </View>
     );
 };
