@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet} from "react-native";
-import {AppColors} from "../theme/AppTheme";
+import {AppColors} from "../../theme/AppTheme";
 
 export const styles = StyleSheet.create({
     container: {
