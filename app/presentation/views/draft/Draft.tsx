@@ -1,14 +1,31 @@
-import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, ActivityIndicator, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {styles} from "./StylesDraft";
 import {useDraftViewModel} from "./ViewModel";
+import {PersonajeInterface} from "../../../domain/entities/Personaje";
 
 const Draft = () => {
-    const slug = 'HTvi8WnyU_RG4OjTCmY5mg'; // ⚠️ Reemplazá con el slug dinámico si es necesario
+    const slug = 'HTvi8WnyU_RG4OjTCmY5mg';
     const { baneados, restantes, equipoElegido } = useDraftViewModel(slug);
-    // const equipo1Picks = restantes.filter((_, idx) => idx % 2 === 0);
-    // const equipo2Picks = restantes.filter((_, idx) => idx % 2 !== 0);
-    // const getFullImageUrl = (path: string) => `http://10.0.2.2:8000/${path}`;
+
+    const [turno, setTurno] = useState(0);
+    const [equipo1, setEquipo1] = useState<PersonajeInterface[]>([]);
+    const [equipo2, setEquipo2] = useState<PersonajeInterface[]>([]);
+
+
+    const handleNextPick = () => {
+        if (turno < restantes.length) {
+            const personaje = restantes[turno];
+
+            if (turno % 2 === 0) {
+                setEquipo1(prev => [...prev, personaje]);
+            } else {
+                setEquipo2(prev => [...prev, personaje]);
+            }
+
+            setTurno(prev => prev + 1);
+        }
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -18,7 +35,11 @@ const Draft = () => {
             <View style={styles.grid}>
                 {baneados.map((personaje, index) => (
                     <View key={index} style={styles.imageContainer}>
-                        <Image source={{ uri: personaje.imagen }} style={styles.image} resizeMode="cover" />
+                        <Image
+                            source={{ uri: personaje.imagen }}
+                            style={styles.image}
+                            resizeMode="cover"
+                        />
                     </View>
                 ))}
             </View>
@@ -37,19 +58,35 @@ const Draft = () => {
                         </>
                     )}
                 </View>
+
                 <View style={styles.teams}>
-                    {Array(5).fill(null).map((_, idx) => (
-                        <View key={idx} style={styles.imageContainer} />
+                    {equipo1.map((personaje, idx) => (
+                        <View key={idx} style={styles.imageContainer}>
+                            <Image
+                                source={{ uri: personaje.imagen }}
+                                style={styles.image}
+                                resizeMode="cover"
+                            />
+                        </View>
                     ))}
                 </View>
             </View>
 
             <View style={styles.ruletaRow}>
-                <TouchableOpacity>
-                    <Image source={require('../../../../assets/ruleta.png')} style={styles.ruletaIcon} />
+                <TouchableOpacity onPress={handleNextPick}>
+                    <Image
+                        source={require('../../../../assets/ruleta.png')}
+                        style={styles.ruletaIcon}
+                    />
                 </TouchableOpacity>
                 <View style={styles.imageSelected}>
-                    <Image source={require('../../../../assets/prueba.png')} style={styles.image} resizeMode="cover" />
+                    {turno > 0 && turno <= restantes.length && (
+                        <Image
+                            source={{ uri: restantes[turno - 1].imagen }}
+                            style={styles.image}
+                            resizeMode="cover"
+                        />
+                    )}
                 </View>
             </View>
 
@@ -59,8 +96,14 @@ const Draft = () => {
                     <Text style={styles.teamTitle}>Equipo 2</Text>
                 </View>
                 <View style={styles.teams}>
-                    {Array(5).fill(null).map((_, idx) => (
-                        <View key={idx} style={styles.imageContainer} />
+                    {equipo2.map((personaje, idx) => (
+                        <View key={idx} style={styles.imageContainer}>
+                            <Image
+                                source={{ uri: personaje.imagen }}
+                                style={styles.image}
+                                resizeMode="cover"
+                            />
+                        </View>
                     ))}
                 </View>
             </View>
