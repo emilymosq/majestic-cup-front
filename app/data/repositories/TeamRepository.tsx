@@ -10,7 +10,7 @@ export class TeamRepositoryImpl implements TeamRepository{
             return Promise.resolve(response.data.data);
         } catch (error) {
             let e = (error as AxiosError);
-            console.log("Error respuesta: ", e.response?.data);
+            console.log("Error respuesta aqui es el fallo: ", e.response?.data);
             return Promise.resolve(JSON.parse(JSON.stringify(e.response?.data)));
         }
     }
