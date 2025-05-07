@@ -7,7 +7,7 @@ const Member = () => {
     const {jugadores, errorMessage} = TeamMembersViewModel();
 
     return (
-        <View style={styles.container}>
+        <View>
             {jugadores.map((j, index) => (
                 <View key={index} style={styles.container}>
                     <View style={styles.userInfo}>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        marginBottom: 20,
     },
     userInfo: {
         flexDirection: 'row',

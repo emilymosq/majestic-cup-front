@@ -8,13 +8,14 @@ export const styles = StyleSheet.create({
         height: '100%',
         flex: 1,
         backgroundColor: AppColors.backgroundColor,
-        padding: 25
+        padding: 25,
+
     },
     containerTop:{
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 30
+        marginTop: 30,
     },
     backButton: {
         position: 'absolute',
