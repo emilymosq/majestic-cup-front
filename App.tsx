@@ -5,14 +5,14 @@ import Login from "./app/presentation/views/auth/Login";
 import BottomTabNavigator from "./app/presentation/navigation/BottomTabNavigator";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import TeamMembers from "./app/presentation/views/team-members/TeamMembers";
+import {TeamsInterface} from "./app/domain/entities/Teams";
 
 const Stack= createNativeStackNavigator<RootStackParamlist>();
 
 export type RootStackParamlist = {
     Login: undefined,
-    TeamMembers: undefined,
+    TeamMembers: { slug: string },
     BottomTabNavigator: undefined,
-    DetailMember: undefined,
 }
 
 export default function App() {
@@ -23,7 +23,6 @@ export default function App() {
               <Stack.Screen name={"Login"} component={Login}/>
               <Stack.Screen name={"TeamMembers"} component={TeamMembers}/>
               <Stack.Screen name={"BottomTabNavigator"} component={BottomTabNavigator}/>
-              <Stack.Screen name={"DetailMember"} component={TeamMembers}/>
             </Stack.Navigator>
           </NavigationContainer>
       </SafeAreaProvider>
