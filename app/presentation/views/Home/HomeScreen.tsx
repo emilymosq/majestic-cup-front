@@ -55,7 +55,13 @@ export function HomeScreen({navigation}: PropsStackNavigation) {
                             </View>
                             {index < 3 ? (
                                 <Image
-                                    source={require('../../../../assets/trofeo_1.png')}
+                                    source={
+                                        index === 0
+                                            ? require('../../../../assets/trofeo_1.png')
+                                            : index === 1
+                                            ? require('../../../../assets/2_lugar.png')
+                                            : require('../../../../assets/3er_lugar.png')
+                                    }
                                     style={styles.trophy}
                                 />
                             ) : (

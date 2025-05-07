@@ -3,8 +3,12 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Member from "../../components/Member";
 import {styles} from "./StylesTeamMembers";
 import {PropsStackNavigation} from "../../interfaces/StackNav";
+import {TeamMembersViewModel} from "./ViewModel";
 
 const TeamMembers = ({navigation}: PropsStackNavigation) => {
+
+
+
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
@@ -14,7 +18,7 @@ const TeamMembers = ({navigation}: PropsStackNavigation) => {
                     <Image source={require('../../../../assets/atras.png')} style={styles.imageIcon} />
                 </TouchableOpacity>
                 <View style={styles.textWrapper}>
-                    <Text style={styles.textTeam}>Equipo 1</Text>
+                    <Text style={styles.textTeam}>Equipo1</Text>
                 </View>
             </View>
             <View style={styles.containerMember}>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, Text, View, StyleSheet} from "react-native";
+import {Image, Text, View, StyleSheet, Linking, TouchableOpacity} from "react-native";
 import {AppColors} from "../theme/AppTheme";
 import {TeamMembersViewModel} from "../views/team-members/ViewModel";
 
@@ -15,7 +15,18 @@ const Member = () => {
                         <Text style={styles.textUser}>{j.nombre}</Text>
                     </View>
                     <Text style={styles.textUser}>{j.nickname}</Text>
-                    <Image source={require('../../../assets/comunicacion.png')} style={styles.imageIcon} />
+                    {/*<Image source={require('../../../assets/comunicacion.png')} style={styles.imageIcon} />*/}
+                    <View style={{ flexDirection: 'row', gap: 10}}>
+                        {j.red_social?.map((red) => (
+                            <TouchableOpacity key={red.red} onPress={() => Linking.openURL(red.link)}>
+                                <Image
+                                    source={{ uri: `http://10.0.2.2:8000${red.red_icono}` }}
+                                    style={styles.imageIcon}
+                                />
+                            </TouchableOpacity>
+
+                        ))}
+                    </View>
                 </View>
             ))}
         </View>
