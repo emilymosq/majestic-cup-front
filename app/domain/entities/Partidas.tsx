@@ -1,4 +1,5 @@
 import {TeamsInterface} from "./Teams";
+import {PersonajeInterface} from "./Personaje";
 
 export interface MatchesInterface {
     id?: number;
@@ -12,3 +13,8 @@ export interface MatchesInterface {
     is_active: boolean;
 }
 
+export interface RouletteResponse {
+    primer_equipo_elegir: TeamsInterface;
+    personajes_baneados: PersonajeInterface[];
+    personajes_restantes: PersonajeInterface[];
+}

@@ -1,38 +1,49 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, ActivityIndicator, ScrollView} from 'react-native';
 import {styles} from "./StylesDraft";
+import {useDraftViewModel} from "./ViewModel";
 
 const Draft = () => {
-    const dummyImg = require('../../../../assets/personaje.png');
-    const prueba = require('../../../../assets/prueba.png');
-    const squares = Array(10).fill(dummyImg);
-    const equipo1 = Array(5).fill(prueba);
-    const equipo2 = Array(5).fill(prueba);
+    const slug = 'HTvi8WnyU_RG4OjTCmY5mg'; // ⚠️ Reemplazá con el slug dinámico si es necesario
+    const { baneados, restantes, equipoElegido } = useDraftViewModel(slug);
+    // const equipo1Picks = restantes.filter((_, idx) => idx % 2 === 0);
+    // const equipo2Picks = restantes.filter((_, idx) => idx % 2 !== 0);
+    // const getFullImageUrl = (path: string) => `http://10.0.2.2:8000/${path}`;
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.title}>Draft</Text>
             <Text style={styles.subtitle}>Los 10 mandaos</Text>
+
             <View style={styles.grid}>
-                {squares.map((img, index) => (
+                {baneados.map((personaje, index) => (
                     <View key={index} style={styles.imageContainer}>
-                        <Image source={img} style={styles.image} resizeMode="cover" />
+                        <Image source={{ uri: personaje.imagen }} style={styles.image} resizeMode="cover" />
                     </View>
                 ))}
             </View>
+
             <View style={styles.teamSection}>
                 <View style={styles.teamInfo}>
-                    <Image source={require('../../../../assets/usuario.png')} style={styles.imageTeam}/>
-                    <Text style={styles.teamTitle}>Equipo 1</Text>
+                    {equipoElegido ? (
+                        <>
+                            <Image source={{ uri: equipoElegido.imagen }} style={styles.imageTeam} />
+                            <Text style={styles.teamTitle}>{equipoElegido.nombre}</Text>
+                        </>
+                    ) : (
+                        <>
+                            <Image source={require('../../../../assets/usuario.png')} style={styles.imageTeam} />
+                            <Text style={styles.teamTitle}>Equipo 1</Text>
+                        </>
+                    )}
                 </View>
                 <View style={styles.teams}>
-                    {equipo1.map((img, idx) => (
-                        <View key={idx} style={styles.imageContainer}>
-                            {img && <Image source={img} style={styles.image} resizeMode="cover" />}
-                        </View>
+                    {Array(5).fill(null).map((_, idx) => (
+                        <View key={idx} style={styles.imageContainer} />
                     ))}
                 </View>
             </View>
+
             <View style={styles.ruletaRow}>
                 <TouchableOpacity>
                     <Image source={require('../../../../assets/ruleta.png')} style={styles.ruletaIcon} />
@@ -41,21 +52,20 @@ const Draft = () => {
                     <Image source={require('../../../../assets/prueba.png')} style={styles.image} resizeMode="cover" />
                 </View>
             </View>
+
             <View style={styles.teamSection}>
                 <View style={styles.teamInfo}>
-                    <Image source={require('../../../../assets/usuario.png')} style={styles.imageTeam}/>
+                    <Image source={require('../../../../assets/usuario.png')} style={styles.imageTeam} />
                     <Text style={styles.teamTitle}>Equipo 2</Text>
                 </View>
                 <View style={styles.teams}>
-                    {equipo2.map((img, idx) => (
-                        <View key={idx} style={styles.imageContainer}>
-                            {img && <Image source={img} style={styles.image} resizeMode="cover" />}
-                        </View>
+                    {Array(5).fill(null).map((_, idx) => (
+                        <View key={idx} style={styles.imageContainer} />
                     ))}
                 </View>
             </View>
-        </View>
-    )
-}
+        </ScrollView>
+    );
+};
 
 export default Draft;
