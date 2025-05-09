@@ -2,6 +2,7 @@ import {useState} from "react";
 import {UserLogin, UserLoginInterface} from "../../../domain/entities/User";
 import {loginAuthUseCase} from "../../../domain/useCases/auth/LoginAuth";
 import {SaveUserUseCase} from "../../../domain/useCases/userLocal/SaveUser";
+import {useUserLocalStorage} from "../../hooks/useUserLocalStorage";
 
 
 
@@ -51,5 +52,4 @@ const LoginViewModel = () => {
         user
     }
 }
-
-}
+export default LoginViewModel;

@@ -1,14 +1,28 @@
-import React from "react";
-import {Text, View, Image} from "react-native";
+import React, {useEffect} from "react";
+import {Text, View, Image, ToastAndroid} from "react-native";
 import FormInput from "../../components/FormInput";
 import styles from "./StylesLogin";
 import {PropsStackNavigation} from "../../interfaces/StackNav";
 import {LoginButton} from "../../components/LoginButton";
+import viewModel from "./ViewModel";
+import LoginViewModel from "./ViewModel";
 
-export function Login({navigation, route}: PropsStackNavigation) {
 
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
+export function LoginScreen({navigation, route}: PropsStackNavigation) {
+
+    const {email, password, onChangeLogin, login, errorMessage, user} = LoginViewModel();
+
+    useEffect(() => {
+            if (errorMessage != "")
+                ToastAndroid.show(errorMessage, ToastAndroid.LONG)
+        },
+        [errorMessage])
+
+    useEffect(() => {
+        if (user && user?.token) {
+            navigation.replace("BottomTabNavigator")
+        }
+    }, [user]);
 
     return (
         <View style={styles.container}>
@@ -30,7 +44,7 @@ export function Login({navigation, route}: PropsStackNavigation) {
                     keyboardType="default"
                     secureTextEntry={false}
                     editable={true}
-                    onPressFormInterface={(text) => setEmail(text)}
+                    onPressFormInterface={(text) => onChangeLogin('email', text)}
 
                 ></FormInput>
                 <FormInput
@@ -40,7 +54,7 @@ export function Login({navigation, route}: PropsStackNavigation) {
                     keyboardType="default"
                     secureTextEntry={true}
                     editable={true}
-                    onPressFormInterface={(text) => setPassword(text)}
+                    onPressFormInterface={(text) => onChangeLogin('password', text)}
 
                 ></FormInput>
                 <View style={styles.buttonContainer}>
@@ -51,4 +65,4 @@ export function Login({navigation, route}: PropsStackNavigation) {
     );
 }
 
-export default Login;
+export default LoginScreen;
