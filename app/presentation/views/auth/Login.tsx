@@ -4,7 +4,6 @@ import FormInput from "../../components/FormInput";
 import styles from "./StylesLogin";
 import {PropsStackNavigation} from "../../interfaces/StackNav";
 import {LoginButton} from "../../components/LoginButton";
-import viewModel from "./ViewModel";
 import LoginViewModel from "./ViewModel";
 
 
@@ -58,7 +57,9 @@ export function LoginScreen({navigation, route}: PropsStackNavigation) {
 
                 ></FormInput>
                 <View style={styles.buttonContainer}>
-                    <LoginButton onPress={() => { navigation.navigate('BottomTabNavigator')}} text={"Entrar"}/>
+                    <LoginButton text={"Entrar"}
+                                 //onPress={login}
+                        onPress={() => navigation.replace("BottomTabNavigator")}/>
                 </View>
             </View>
         </View>

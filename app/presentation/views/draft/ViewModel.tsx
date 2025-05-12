@@ -9,6 +9,7 @@ export const useDraftViewModel = (slug: string) => {
     const [baneados, setBaneados] = useState<PersonajeInterface[]>([]);
     const [restantes, setRestantes] = useState<PersonajeInterface[]>([]);
     const [equipoElegido, setEquipoElegido] = useState<TeamsInterface | null>(null);
+    const [loading, setLoading] = useState(true);
 
     const formatImg = (item: any) => ({
         ...item,
@@ -17,10 +18,12 @@ export const useDraftViewModel = (slug: string) => {
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             const response = await rouletteUseCase(slug);
             setBaneados(response.personajes_baneados.map(formatImg));
             setRestantes(response.personajes_restantes.map(formatImg));
             setEquipoElegido(formatImg(response.primer_equipo_elegir));
+            setLoading(false);
         };
 
         fetchData();
@@ -30,5 +33,6 @@ export const useDraftViewModel = (slug: string) => {
         baneados,
         restantes,
         equipoElegido,
+        loading,
     };
 };
