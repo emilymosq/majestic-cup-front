@@ -3,7 +3,7 @@ import {PersonajeInterface} from "../../../domain/entities/Personaje";
 import {rouletteUseCase} from "../../../domain/useCases/partidas/Roulette";
 import {TeamsInterface} from "../../../domain/entities/Teams";
 
-const API_BASE_URL = 'http://10.0.2.2:8000/';
+const API_BASE_URL = 'http://10.0.2.2:8000';
 
 export const useDraftViewModel = (slug: string) => {
     const [baneados, setBaneados] = useState<PersonajeInterface[]>([]);
@@ -27,7 +27,7 @@ export const useDraftViewModel = (slug: string) => {
         };
 
         fetchData();
-    }, [slug]);
+    }, []);
 
     return {
         baneados,

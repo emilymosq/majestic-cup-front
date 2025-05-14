@@ -7,7 +7,7 @@ import { MotiView } from 'moti';
 
 
 const Draft = () => {
-    const slug = 'HTvi8WnyU_RG4OjTCmY5mg';
+    const slug = 'Jh6Aqr6TNj-hpU80cVpcYQ';
     const { baneados, restantes, equipoElegido,loading } = useDraftViewModel(slug);
 
     const [mostrarBaneados, setMostrarBaneados] = useState(false);
