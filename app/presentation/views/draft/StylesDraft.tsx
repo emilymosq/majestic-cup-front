@@ -84,4 +84,17 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
     },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        padding: 30,
+        borderRadius: 20,
+        alignItems: 'center',
+        elevation: 10,
+    },
 });

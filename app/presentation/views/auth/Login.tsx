@@ -1,16 +1,69 @@
-import React from "react";
-import {Button, Text, View} from "react-native";
+import React, {useEffect} from "react";
+import {Text, View, Image, ToastAndroid} from "react-native";
+import FormInput from "../../components/FormInput";
+import styles from "./StylesLogin";
 import {PropsStackNavigation} from "../../interfaces/StackNav";
+import {LoginButton} from "../../components/LoginButton";
+import LoginViewModel from "./ViewModel";
 
-const Login = ({navigation, route}: PropsStackNavigation) => {
-    return(
-        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-            <Text>Login</Text>
-            <Button title={"Entrar"} onPress={()=>{
-                navigation.navigate('BottomTabNavigator')
-            }}/>
+
+export function LoginScreen({navigation, route}: PropsStackNavigation) {
+
+    const {email, password, onChangeLogin, login, errorMessage, user} = LoginViewModel();
+
+    useEffect(() => {
+            if (errorMessage != "")
+                ToastAndroid.show(errorMessage, ToastAndroid.LONG)
+        },
+        [errorMessage])
+
+    useEffect(() => {
+        if (user && user?.token) {
+            navigation.replace("BottomTabNavigator")
+        }
+    }, [user]);
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.logoContainer}>
+                <Image
+                    style={styles.logo}
+                    //source={require('../../../../assets/')}
+                ></Image>
+            </View>
+            <Text style={styles.title}>¡Bienvenido! </Text>
+            <Text style={styles.subTitle}>Inicia sesión con tu cuenta</Text>
+
+            <View style={styles.formContainer}>
+
+                <FormInput
+                    image={null}
+                    text={"Correo eletrónico"}
+                    placeholder={""}
+                    keyboardType="default"
+                    secureTextEntry={false}
+                    editable={true}
+                    onPressFormInterface={(text) => onChangeLogin('email', text)}
+
+                ></FormInput>
+                <FormInput
+                    image={null}
+                    text={"Contraseña"}
+                    placeholder={""}
+                    keyboardType="default"
+                    secureTextEntry={true}
+                    editable={true}
+                    onPressFormInterface={(text) => onChangeLogin('password', text)}
+
+                ></FormInput>
+                <View style={styles.buttonContainer}>
+                    <LoginButton text={"Entrar"}
+                                 //onPress={login}
+                        onPress={() => navigation.replace("BottomTabNavigator")}/>
+                </View>
+            </View>
         </View>
-    )
+    );
 }
 
-export default Login;
+export default LoginScreen;
