@@ -49,8 +49,8 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     containerEstadisticas:{
-        marginTop: 35,
-        gap: 25,
+        marginTop: 25,
+        gap: 20,
         justifyContent: 'center',
         alignItems: 'center',
     }

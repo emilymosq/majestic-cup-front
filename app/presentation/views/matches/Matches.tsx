@@ -28,6 +28,11 @@ const Matches = () => {
                     showsVerticalScrollIndicator={false}
                     initialNumToRender={6}
                     windowSize={10}
+                    style={{ width: '100%' }}
+                    contentContainerStyle={{
+                        paddingBottom: 20,
+                        alignItems: 'center', // opcional si quieres que esté centrado
+                    }}
                     ListFooterComponent={
                         <View style={{paddingVertical: 10}}>
                             <Text style={{textAlign: 'center'}}>No hay más partidas</Text>

@@ -2,16 +2,25 @@ import React from "react";
 import {Image, Text, View, StyleSheet} from "react-native";
 import {AppColors} from "../theme/AppTheme";
 
-const EstadisticasComponent = () => {
+interface Props{
+    imagen: any,
+    nombre: string,
+    victorias: number,
+    derrotas: number,
+    winrate: number,
+    trofeo: any
+}
+
+const EstadisticasComponent = ({imagen, nombre, victorias, derrotas, winrate, trofeo}:Props) => {
     return (
         <View style={styles.container}>
             <View style={styles.userInfo}>
-                <Image source={require('../../../assets/usuario.png')} style={styles.imageUser} />
-                <Text style={styles.textUser}>Equipo 1</Text>
+                <Image source={imagen} style={styles.imageUser} />
+                <Text style={styles.textUser}>{nombre}</Text>
             </View>
-            <Text style={styles.textUser}>0/0</Text>
-            <Text style={styles.textUser}>0%</Text>
-            <Image source={require('../../../assets/trofeo_1.png')} style={styles.imageIcon} />
+            <Text style={styles.textUser}>{victorias}/{derrotas}</Text>
+            <Text style={styles.textUser}>{winrate}%</Text>
+            <Image source={trofeo} style={styles.imageIcon} />
         </View>
     );
 };
@@ -20,7 +29,7 @@ const EstadisticasComponent = () => {
 
 const styles = StyleSheet.create({
     container: {
-        width: "90%",
+        width: "100%",
         backgroundColor: AppColors.backgroundSecondary,
         borderColor: AppColors.primary,
         borderWidth: 1,
@@ -29,6 +38,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        marginVertical: 10
     },
     userInfo: {
         flexDirection: 'row',

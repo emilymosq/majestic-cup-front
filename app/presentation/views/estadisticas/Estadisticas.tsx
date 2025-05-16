@@ -1,11 +1,26 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import Member from "../../components/Member";
+import React, {useEffect} from 'react';
+import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
 import {styles} from "./StylesEstadisticas";
-import EstadisticasComponent from "../../components/Estadisticas";
-import CharacterModal from "../../components/CharacterModal";
+import {TeamViewModel} from "../Home/ViewModel";
+import {TeamsInterface} from "../../../domain/entities/Teams";
+import {RenderStats} from "./RenderStats";
+import {PropsStackNavigation} from "../../interfaces/StackNav";
 
-const Estadisticas = () => {
+const Estadisticas = ({navigation}: PropsStackNavigation) => {
+    const {teams, getTeams} = TeamViewModel();
+
+    const sortedTeams = teams
+        .slice()
+        .sort((a, b) => {
+            if (b.victorias !== a.victorias) return b.victorias - a.victorias;
+            if (a.derrotas !== b.derrotas) return a.derrotas - b.derrotas;
+            return b.winrate - a.winrate;
+        });
+
+
+    useEffect(() => {
+        getTeams();
+    }, []);
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
@@ -19,10 +34,22 @@ const Estadisticas = () => {
                 </View>
             </View>
             <View style={styles.containerEstadisticas}>
-                <EstadisticasComponent/>
+                <FlatList
+                    data={sortedTeams}
+                    renderItem={({ item, index }: { item: TeamsInterface; index: number }) => (
+                        <RenderStats item={item} index={index} navigation={navigation} />
+                    )}
+                    keyExtractor={(item) => item.id.toString()}
+                    initialNumToRender={10}
+                    windowSize={10}
+                    ListFooterComponent={
+                        <View style={{ paddingVertical: 10 }}>
+                            <Text style={{ textAlign: 'center', color: 'white' }}>no hay más elementos</Text>
+                        </View>
+                    }
+                    />
             </View>
 
-            <CharacterModal/>
         </View>
     )
 }

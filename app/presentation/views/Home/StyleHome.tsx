@@ -45,15 +45,15 @@ const styles = StyleSheet.create({
         paddingBottom: 40
     },
     card: {
-        marginVertical: 15,
+        marginVertical: 10,
         paddingHorizontal: 20,
         marginHorizontal: 20,
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 10,
-        borderWidth: 2,
+        paddingVertical: 15,
+        borderWidth: 1,
         borderColor: AppColors.primary,
-        borderRadius: 20,
+        borderRadius: 10,
     },
     avatar: {
         width: 50,

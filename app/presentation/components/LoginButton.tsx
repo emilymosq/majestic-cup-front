@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, TouchableOpacity, StyleSheet} from "react-native";
 import {Surface} from "react-native-paper"
+import {AppColors} from "../theme/AppTheme";
 
 interface Props{
     onPress: () => void,
@@ -21,7 +22,7 @@ export const LoginButton = ({text, onPress}: Props) => {
 
 const styles = StyleSheet.create({
     boton: {
-        backgroundColor: "#EAB308",
+        backgroundColor: AppColors.primary,
         padding: 15,
         borderRadius: 50,
         alignItems: "center",
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
 
     },
     botontext: {
-      color: "grey",
-      fontSize: 20,
+      color: "black",
+      fontSize: 18,
     },
 })

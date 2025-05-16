@@ -51,7 +51,7 @@ const MatchesComponent = ({ equipo1, equipo2, ganador, fecha, imagen1, imagen2 }
 
 const styles = StyleSheet.create({
     card: {
-        width: '100%',
+        width: 320,
         borderWidth: 1,
         borderColor: AppColors.primary,
         borderRadius: 10,

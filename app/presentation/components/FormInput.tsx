@@ -1,6 +1,7 @@
 import {Image, KeyboardType, TextInput, View, StyleSheet, Text} from "react-native";
 import React from "react";
 import {Surface} from "react-native-paper";
+import {AppColors} from "../theme/AppTheme";
 
 
 interface Props {
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
         marginVertical:17,
         paddingHorizontal: 10,
         borderRadius: 80,
-        borderColor: "#EAB308",
+        borderColor: AppColors.primary,
         borderWidth: 3,
         height: 50,
         elevation: 4,

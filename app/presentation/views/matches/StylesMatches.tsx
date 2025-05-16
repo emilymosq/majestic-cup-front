@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
     containerMatches:{
         marginTop: 35,
         gap: 25,
-        justifyContent: 'center',
-        alignItems: 'center',
+        flex: 1,
     }
 });
