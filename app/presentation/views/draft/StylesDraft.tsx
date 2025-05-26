@@ -30,7 +30,6 @@ export const styles = StyleSheet.create({
         width: 60,
         height: 60,
         margin: 4,
-
     },
     imageSelected:{
         width: 90,
@@ -56,7 +55,9 @@ export const styles = StyleSheet.create({
     },
     teams: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        justifyContent: 'flex-start',
+        gap: 6
     },
     imageTeam:{
         width: 40,
